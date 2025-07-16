@@ -1,7 +1,11 @@
 import React from "react";
 
 const ReservForm = () => {
-  return <div>ReservForm</div>;
+  return (
+    <div>
+      <form action=""></form>
+    </div>
+  );
 };
 
 export default ReservForm;
