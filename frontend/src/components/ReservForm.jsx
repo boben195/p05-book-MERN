@@ -9,6 +9,10 @@ const ReservForm = () => {
     time: "",
     guests: "1",
   });
+  const handleChanges = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const generateTimsSlot = () => {
     const slots = [];
     for (let hour = 9; hour < 21; hour++) {
@@ -33,6 +37,7 @@ const ReservForm = () => {
         <input
           name="name"
           value={formData.name}
+          onChange={handleChanges}
           type="text"
           placeholder="Full Name"
           className="w-full p-3 mb-3 border rounded-lg focus:ring focus:ring-emerald-300"
@@ -41,6 +46,7 @@ const ReservForm = () => {
         <input
           name="email"
           value={formData.email}
+          onChange={handleChanges}
           type="email"
           placeholder="Email"
           className="w-full p-3 mb-3 border rounded-lg focus:ring focus:ring-emerald-300"
@@ -49,6 +55,7 @@ const ReservForm = () => {
         <input
           name="phone"
           value={formData.phone}
+          onChange={handleChanges}
           type="tel"
           placeholder="Phone number"
           className="w-full p-3 mb-3 border rounded-lg focus:ring focus:ring-emerald-300"
@@ -57,6 +64,7 @@ const ReservForm = () => {
         <input
           name="date"
           value={formData.date}
+          onChange={handleChanges}
           type="date"
           className="w-full p-3 mb-3 border rounded-lg focus:ring focus:ring-emerald-300"
           required
@@ -65,6 +73,7 @@ const ReservForm = () => {
         <select
           name="time"
           value={formData.time}
+          onChange={handleChanges}
           className="w-full p-3 mb-3 border rounded-lg focus:ring focus:ring-emerald-300"
           required
         >
@@ -78,6 +87,7 @@ const ReservForm = () => {
         <select
           name="guests"
           value={formData.guests}
+          onChange={handleChanges}
           className="w-full p-3 mb-3 border rounded-lg focus:ring focus:ring-emerald-300"
           required
         >
