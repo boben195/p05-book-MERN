@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ReservForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    date: "",
+    time: "",
+    guests: "1",
+  });
   const generateTimsSlot = () => {
     const slots = [];
     for (let hour = 9; hour < 21; hour++) {
@@ -20,11 +28,32 @@ const ReservForm = () => {
     <div>
       <form>
         <h2>Book a Reservaation</h2>
-        <input type="text" placeholder="Full Name" />
-        <input type="email" placeholder="Email" />
-        <input type="tel" placeholder="Phone number" />
-        <input type="date" required lang="en" />
-        <select required>
+        <input
+          name="name"
+          value={formData.name}
+          type="text"
+          placeholder="Full Name"
+        />
+        <input
+          name="email"
+          value={formData.email}
+          type="email"
+          placeholder="Email"
+        />
+        <input
+          name="phone"
+          value={formData.phone}
+          type="tel"
+          placeholder="Phone number"
+        />
+        <input
+          name="date"
+          value={formData.date}
+          type="date"
+          required
+          lang="en"
+        />
+        <select name="time" value={formData.time} required>
           <option value="">Select Time</option>
           {generateTimsSlot().map((slot, index) => (
             <option key={index} value={slot}>
@@ -32,7 +61,7 @@ const ReservForm = () => {
             </option>
           ))}
         </select>
-        <select required>
+        <select name="guests" value={formData.guests} required>
           {[
             ...Array(10)
               .keys()
