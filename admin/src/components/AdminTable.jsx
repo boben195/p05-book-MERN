@@ -33,7 +33,27 @@ const AdminTable = () => {
             <th>Delete</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {reservations.length === 0 ? (
+            <tr>
+              <td colSpan="7">No reservations found</td>
+            </tr>
+          ) : (
+            reservations.map((res, index) => (
+              <tr key={index}>
+                <td>{res.name}</td>
+                <td>{res.email}</td>
+                <td>{res.phone}</td>
+                <td>{res.date}</td>
+                <td>{res.time}</td>
+                <td>{res.guests}</td>
+                <td>
+                  <button>Delete</button>
+                </td>
+              </tr>
+            ))
+          )}
+        </tbody>
       </table>
     </div>
   );
