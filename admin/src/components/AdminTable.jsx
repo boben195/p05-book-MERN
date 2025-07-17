@@ -19,42 +19,50 @@ const AdminTable = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Admin Panel</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Guests</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reservations.length === 0 ? (
-            <tr>
-              <td colSpan="7">No reservations found</td>
+    <div className="min-h-screen bg-gray-100 p-6">
+      <h2 className="text-3xl font-bold text-gray-700 text-center mb-6">
+        Admin Panel
+      </h2>
+      <div className="overflow-x-auto">
+        <table className="w-full bg-white shadow-lg rounded-xl">
+          <thead>
+            <tr className="bg-emerald-500 text-white text-left">
+              <th className="p-3">Name</th>
+              <th className="p-3">Email</th>
+              <th className="p-3">Phone</th>
+              <th className="p-3">Date</th>
+              <th className="p-3">Time</th>
+              <th className="p-3">Guests</th>
+              <th className="p-3">Delete</th>
             </tr>
-          ) : (
-            reservations.map((res, index) => (
-              <tr key={index}>
-                <td>{res.name}</td>
-                <td>{res.email}</td>
-                <td>{res.phone}</td>
-                <td>{res.date}</td>
-                <td>{res.time}</td>
-                <td>{res.guests}</td>
-                <td>
-                  <button>Delete</button>
+          </thead>
+          <tbody>
+            {reservations.length === 0 ? (
+              <tr>
+                <td colSpan="7" className="p-4 text-center text-gray-500">
+                  No reservations found
                 </td>
               </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+            ) : (
+              reservations.map((res, index) => (
+                <tr key={index} className="border-b hover:bg-gray-50">
+                  <td className="p-3">{res.name}</td>
+                  <td className="p-3">{res.email}</td>
+                  <td className="p-3">{res.phone}</td>
+                  <td className="p-3">{res.date}</td>
+                  <td className="p-3">{res.time}</td>
+                  <td className="p-3">{res.guests}</td>
+                  <td className="p-3">
+                    <button className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
